@@ -12,7 +12,7 @@ class App(FastAPI):
     def setup_routes(self):
         @self.get("/")
         def read_root():
-            return "Merhaba Python1"
+            return "Merhaba Python!"
 
         @self.get("/staj")
         async def get_random_city():

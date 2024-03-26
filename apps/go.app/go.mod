@@ -1,6 +1,6 @@
 module kartaca.com/mod
 
-go 1.23
+go 1.21.5
 
 require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
@@ -23,3 +23,5 @@ require (
 	go.opentelemetry.io/otel/trace v1.24.0 // indirect
 	golang.org/x/sys v0.15.0 // indirect
 )
+
+replace kartaca.com/mod => ../go.app

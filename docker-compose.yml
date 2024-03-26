@@ -4,14 +4,26 @@ services:
     extends:
       file: ./docker-composes/services-docker-compose.yml
       service:  py.app
+    depends_on:
+      - esapp
   goapp:
     extends:
       file: ./docker-composes/services-docker-compose.yml
       service:  go.app
+    depends_on:
+      - esapp
   haproxy:
     extends:
       file: ./docker-composes/services-docker-compose.yml
       service: haproxy
+  esapp:
+    extends:
+      file: ./docker-composes/services-docker-compose.yml
+      service: es.app
+    depends_on:
+      - elasticsearch1
+      - elasticsearch2
+      - elasticsearch3
   elasticsearch1:
     extends:
       file: ./docker-composes/elastich-docker-compose.yml
