@@ -1,0 +1,4 @@
+FROM haproxy:1.7
+
+LABEL maintainer="Harun KURT <harunkurtdev> (https://github.com/harunkurtdev)"
+COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg

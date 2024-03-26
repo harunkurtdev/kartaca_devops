@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  go.app:
+    container_name: goapp
+    build:
+      context: ../apps/go.app
+      dockerfile: ../../dockerfiles/Dockerfile.go.app
+    ports:
+      - 5555:5555
+  py.app:
+    container_name: pyapp
+    build:
+      context: ../apps/py.app
+      dockerfile: ../../dockerfiles/Dockerfile.py.app
+    ports:
+      - 4444:4444
+  haproxy:
+      build:
+        context: ../tools/haproxy
+        dockerfile:  ../../dockerfiles/Dockerfile.haproxy
+      container_name: haproxy
+      ports:
+          - "80:80"

@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+  pyapp:
+    extends:
+      file: ./docker-composes/services-docker-compose.yml
+      service:  py.app
+  goapp:
+    extends:
+      file: ./docker-composes/services-docker-compose.yml
+      service:  go.app
+  haproxy:
+    extends:
+      file: ./docker-composes/services-docker-compose.yml
+      service: haproxy
+  elasticsearch1:
+    extends:
+      file: ./docker-composes/elastich-docker-compose.yml
+      service: elasticsearch1
+  elasticsearch2:
+    extends:
+      file: ./docker-composes/elastich-docker-compose.yml
+      service: elasticsearch2
+  elasticsearch3:
+    extends:
+      file: ./docker-composes/elastich-docker-compose.yml
+      service: elasticsearch3
+
+
+volumes:
+  esdata1:
+    driver: local
+  esdata2:
+    driver: local
+  esdata3:
+    driver: local
