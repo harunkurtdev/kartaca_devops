@@ -115,4 +115,4 @@ db.iller.insertMany([
     "nufus": 623409,
     "ilceler": ["merkez", "zara"]
   }
-])
+])         
