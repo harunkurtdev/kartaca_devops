@@ -17,7 +17,7 @@ class App(FastAPI):
         @self.get("/staj")
         async def get_random_city():
             try:
-                response = requests.get('http://localhost:9200/cities/_search?size=100')
+                response = requests.get('http://elasticsearch1:9200/cities/_search?size=100')
                 data = response.json()
                 cities = [hit['_source'] for hit in data['hits']['hits']]
                 random_city = random.choice(cities)

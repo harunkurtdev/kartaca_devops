@@ -9,7 +9,7 @@ services:
     ports:
       - 5555:5555
   py.app:
-    container_name: pyapp
+    container_name: pythonapp
     build:
       context: ../apps/py.app
       dockerfile: ../../dockerfiles/Dockerfile.py.app
@@ -21,12 +21,12 @@ services:
       context: ../tools/es-init/
       dockerfile: ../../dockerfiles/Dockerfile.init.app
   haproxy:
-      build:
-        context: ../tools/haproxy
-        dockerfile:  ../../dockerfiles/Dockerfile.haproxy
-      container_name: haproxy
-      depends:
-        - goapp
-        - pyapp
-      ports:
-          - "80:80"
+    build:
+      context: ../tools/haproxy
+      dockerfile:  ../../dockerfiles/Dockerfile.haproxy
+    container_name: haproxy
+    depends:
+      - goapp
+      - pythonapp
+    ports:
+        - "80:80"

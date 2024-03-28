@@ -1,22 +1,37 @@
 version: "3.9"
 services:
-  pyapp:
+  pythonapp:
+    networks:
+      - service_bridge
     extends:
       file: ./docker-composes/services-docker-compose.yml
       service:  py.app
     depends_on:
       - esapp
   goapp:
+    networks:
+      - service_bridge
     extends:
       file: ./docker-composes/services-docker-compose.yml
-      service:  go.app
+      service:  go.app  
     depends_on:
       - esapp
   haproxy:
+    networks:
+      - service_bridge
     extends:
       file: ./docker-composes/services-docker-compose.yml
       service: haproxy
+    depends_on:
+      - goapp
+      - pythonapp
+      - esapp
+      - elasticsearch1
+      - elasticsearch2
+      - elasticsearch3
   esapp:
+    networks:
+        - service_bridge
     extends:
       file: ./docker-composes/services-docker-compose.yml
       service: es.app
@@ -25,14 +40,20 @@ services:
       - elasticsearch2
       - elasticsearch3
   elasticsearch1:
+    networks:
+      - service_bridge
     extends:
       file: ./docker-composes/elastich-docker-compose.yml
       service: elasticsearch1
   elasticsearch2:
+    networks:
+        - service_bridge
     extends:
       file: ./docker-composes/elastich-docker-compose.yml
       service: elasticsearch2
   elasticsearch3:
+    networks:
+      - service_bridge
     extends:
       file: ./docker-composes/elastich-docker-compose.yml
       service: elasticsearch3
@@ -45,3 +66,6 @@ volumes:
     driver: local
   esdata3:
     driver: local
+
+networks:
+  service_bridge:

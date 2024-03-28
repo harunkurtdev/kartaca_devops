@@ -1,4 +1,6 @@
-// Function to sleep for a given number of milliseconds
+
+const {cities}  = require('./variables')
+
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 async function indexData() {
@@ -6,7 +8,7 @@ async function indexData() {
 
   try {
     // Create index "cities" with mapping
-    await fetch('http://localhost:9200/cities', {
+    await fetch('http://elasticsearch1:9200/cities', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -15,8 +17,9 @@ async function indexData() {
         settings: {},
         mappings: {
           properties: {
-            name: { type: 'text' },
-            country: { type: 'text' }
+            il: { type: 'text' },
+            nufus: { type: 'text' }
+            ilceler :
           }
         }
       })
@@ -24,7 +27,7 @@ async function indexData() {
 
     // Index 10 documents into "cities" index
     for (let i = 1; i <= 10; i++) {
-      await fetch('http://localhost:9200/cities/_doc', {
+      await fetch('http://elasticsearch1:9200/cities/_doc', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -37,7 +40,7 @@ async function indexData() {
     }
 
     // Create index "countries" with mapping
-    await fetch('http://localhost:9200/countries', {
+    await fetch('http://elasticsearch1:9200/countries', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -54,7 +57,7 @@ async function indexData() {
 
     // Index 10 documents into "countries" index
     for (let i = 1; i <= 10; i++) {
-      await fetch('http://localhost:9200/countries/_doc', {
+      await fetch('http://elasticsearch1:9200/countries/_doc', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
