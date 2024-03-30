@@ -5,30 +5,32 @@ curl -XPUT 'http://localhost:9200/cities' -H 'Content-Type: application/json' -d
   "settings": {},
   "mappings": {
     "properties": {
-      "name": {"type": "text"},
-      "country": {"type": "text"}
+      "il": {"type": "text"},
+      "nufus": {"type": "integer"},
+      "ilceler": {"type": "keyword"}
     }
   }
 }'
 
 for i in {1..10}; do
   curl -XPOST 'http://localhost:9200/cities/_doc' -H 'Content-Type: application/json' -d '{
-    "name": "City'$i'",
-    "country": "Country'$i'"
+    "il": "City'$i'",
+    "nufus": '${i}',
+    "ilceler": ["District'$i'_1", "District'$i'_2"] 
   }'
 done
 
-curl -XPUT 'http://localhost:9200/countries' -H 'Content-Type: application/json' -d '{
-  "settings": {},
-  "mappings": {
-    "properties": {
-      "name": {"type": "text"}
-    }
-  }
-}'
+# curl -XPUT 'http://localhost:9200/countries' -H 'Content-Type: application/json' -d '{
+#   "settings": {},
+#   "mappings": {
+#     "properties": {
+#       "name": {"type": "text"}
+#     }
+#   }
+# }'
 
-for i in {1..10}; do
-  curl -XPOST 'http://localhost:9200/countries/_doc' -H 'Content-Type: application/json' -d '{
-    "name": "Country'$i'"
-  }'
-done
+# for i in {1..10}; do
+#   curl -XPOST 'http://localhost:9200/countries/_doc' -H 'Content-Type: application/json' -d '{
+#     "name": "Country'$i'"
+#   }'
+# done

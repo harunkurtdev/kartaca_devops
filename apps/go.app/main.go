@@ -7,48 +7,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"kartaca.com/mod/handler"
-	// "github.com/elastic/go-elasticsearch/v8"
-	// "github.com/elastic/go-elasticsearch/v8/esapi"
 )
-
-func staj(ctx *fiber.Ctx) error {
-	// cfg := elasticsearch.Config{
-	// 	Addresses: []string{"http://localhost:9200"},
-	// }
-
-	// es, err := elasticsearch.NewClient(cfg)
-	// if err != nil {
-	// 	log.Fatalf("Error creating the Elasticsearch client: %s", err)
-	// }
-
-	// req := esapi.SearchRequest{
-	// 	Index: []string{"countries"},
-	// }
-
-	// res, err := req.Do(context.Background(), es)
-	// if err != nil {
-	// 	log.Fatalf("Error sending the request to Elasticsearch: %s", err)
-	// }
-
-	// defer res.Body.Close()
-	// if res.IsError() {
-	// 	log.Fatalf("Elasticsearch error: %s", res.Status())
-	// }
-
-	// var response map[string]interface{}
-	// if err := json.NewDecoder(res.Body).Decode(&response); err != nil {
-	// 	log.Fatalf("Error parsing the Elasticsearch response: %s", err)
-	// }
-
-	// rand.Seed(time.Now().UnixNano())
-	// hits := response["hits"].(map[string]interface{})["hits"].([]interface{})
-	// randomIndex := rand.Intn(len(hits))
-	// randomCountry := hits[randomIndex].(map[string]interface{})["_source"]
-
-	// return ctx.JSON(randomCountry)
-
-	return ctx.Send([]byte("Merhaba Go!"))
-}
 
 func main() {
 
@@ -56,7 +15,7 @@ func main() {
 	app.Use(cors.New())
 
 	app.Get("/", handler.Hello())
-	app.Get("/staj", staj)
+	app.Get("/staj", handler.Countries())
 
 	port := os.Getenv("PORT")
 	if port == "" {

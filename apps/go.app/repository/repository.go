@@ -1,47 +1,36 @@
 package repository
 
 import (
-	"kartaca.com/mod/model"
+	"encoding/json"
+	"fmt"
+	"math/rand"
+	"net/http"
+	"time"
 )
 
-type Repository struct {
-	// client *mongo.Client
-}
+func GetRandomCity() (map[string]interface{}, error) {
+	response, err := http.Get("http://elasticsearch1:9200/countries/_search?size=100")
+	if err != nil {
+		return nil, fmt.Errorf("error fetching data: %v", err)
+	}
+	defer response.Body.Close()
 
-func New() *Repository {
+	var data map[string]interface{}
+	if err := json.NewDecoder(response.Body).Decode(&data); err != nil {
+		return nil, fmt.Errorf("error decoding JSON response: %v", err)
+	}
 
-	// client, err := mongo.Connect(context.Background(), options.Client().ApplyURI(ConnectionURI))
-	// if err != nil {
-	// 	panic(err)
-	// }
-	// return &Repository{
-	// 	client: client,
-	// }
-	return &Repository{}
+	hits, ok := data["hits"].(map[string]interface{})["hits"].([]interface{})
+	if !ok {
+		return nil, fmt.Errorf("unexpected format of hits")
+	}
 
-}
+	cities := make([]map[string]interface{}, len(hits))
+	for i, hit := range hits {
+		cities[i] = hit.(map[string]interface{})["_source"].(map[string]interface{})
+	}
 
-func (r *Repository) GetRandomCountry() (model.Ulkeler, int64) {
-	// collection := r.client.Database(DbName).Collection(CollectionName)
-
-	// count := getDocCount(collection)
-
-	// skip := rand.Int63n(count)
-
-	// var country model.Ulkeler
-
-	// err := collection.FindOne(context.Background(), bson.M{}, options.FindOne().SetSkip(skip)).Decode(&country)
-	// if err != nil {
-	// 	return model.Ulkeler{}, err
-	// }
-	// return country, nil
-	return model.Ulkeler{}, 2
-}
-
-func getDocCount() int64 {
-	// count, err := collection.CountDocuments(context.Background(), bson.M{})
-	// if err != nil {
-	// 	panic(err)
-	// }
-	return 1
+	rand.Seed(time.Now().UnixNano())
+	randomCity := cities[rand.Intn(len(cities))]
+	return randomCity, nil
 }

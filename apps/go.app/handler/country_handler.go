@@ -1,18 +1,19 @@
 package handler
 
 import (
+	"net/http"
+
 	"github.com/gofiber/fiber/v2"
 	"kartaca.com/mod/repository"
 )
 
-func GetCountry(repo *repository.Repository) fiber.Handler {
-	return func(c *fiber.Ctx) error {
-		country, err := repo.GetRandomCountry()
-		if err != 0 {
-			return c.Status(500).JSON(fiber.Map{
-				"message": "Internal server error",
-			})
+func Countries() fiber.Handler {
+	return func(ctx *fiber.Ctx) error {
+		randomCity, err := repository.GetRandomCity()
+		if err != nil {
+			return ctx.Status(http.StatusInternalServerError).JSON(fiber.Map{"error": err.Error()})
 		}
-		return c.JSON(country)
+
+		return ctx.JSON(randomCity)
 	}
 }

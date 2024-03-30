@@ -29,9 +29,10 @@ services:
       - elasticsearch1
       - elasticsearch2
       - elasticsearch3
+      - grafana
   esapp:
     networks:
-        - service_bridge
+      - service_bridge
     extends:
       file: ./docker-composes/services-docker-compose.yml
       service: es.app
@@ -57,6 +58,31 @@ services:
     extends:
       file: ./docker-composes/elastich-docker-compose.yml
       service: elasticsearch3
+  prometheus:
+    networks:
+      - service_bridge
+    extends:
+      file: ./docker-composes/dashboard-docker-compose.yml
+      service: prometheus    
+  node_exporter:
+    networks:
+      - service_bridge
+    extends:
+      file: ./docker-composes/dashboard-docker-compose.yml
+      service: node_exporter    
+  cadvisor:
+    networks:
+      - service_bridge
+    extends:
+      file: ./docker-composes/dashboard-docker-compose.yml
+      service: cadvisor
+  grafana:
+    networks:
+      - service_bridge
+    extends:
+      file: ./docker-composes/dashboard-docker-compose.yml
+      service: grafana
+
 
 
 volumes:
