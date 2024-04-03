@@ -6,6 +6,7 @@ services:
     build:
       context: ../apps/go.app
       dockerfile: ../../dockerfiles/Dockerfile.go.app
+    restart: unless-stopped
     ports:
       - 5555:5555
   py.app:
@@ -13,6 +14,7 @@ services:
     build:
       context: ../apps/py.app
       dockerfile: ../../dockerfiles/Dockerfile.py.app
+    restart: unless-stopped
     ports:
       - 4444:4444
   es.app:
