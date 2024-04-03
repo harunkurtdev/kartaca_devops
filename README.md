@@ -7,7 +7,7 @@ Merhaba Ben Harun KURT, Bölümüm mekatronik müh. fakat, burada öğreneceğim
     - ML
     - Edge Computing
   
-gibi terimleri kullanmak istiyorum.
+gibi terimlerde kullanmak istiyorum.
 
 Aşağıda ki video'da projeye ait, çalışmasını izleyebilirsiniz.
 
