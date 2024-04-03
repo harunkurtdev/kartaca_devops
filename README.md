@@ -11,7 +11,7 @@ gibi terimleri kullanmak istiyorum.
 
 Aşağıda ki video'da projeye ait, çalışmasını izleyebilirsiniz.
 
-![Youtube Link](https://www.youtube.com/watch?v=tNaWTzpV4yE)
+[![Youtube Link](./assets/grogu.jpeg)](https://www.youtube.com/watch?v=tNaWTzpV4yE)
 
 
 Burada yaptığım adımlar 2 farklı OS'ta denenmiştir.
