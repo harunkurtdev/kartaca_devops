@@ -1,4 +1,4 @@
-version: "3.7"
+version: '3.9'
 
 services:
   go.app:
@@ -27,8 +27,5 @@ services:
       context: ../tools/haproxy
       dockerfile:  ../../dockerfiles/Dockerfile.haproxy
     container_name: haproxy
-    depends:
-      - goapp
-      - pythonapp
     ports:
         - "80:80"

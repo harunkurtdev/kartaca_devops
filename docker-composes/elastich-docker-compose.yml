@@ -1,13 +1,14 @@
-version: '3'
+version: '3.9'
 services:
   elasticsearch1:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.0
     container_name: elasticsearch1
     environment:
       - node.name=es-node-1
       - cluster.name=kartaca-cluster
       - discovery.seed_hosts=elasticsearch2,elasticsearch3
       - cluster.initial_master_nodes=es-node-1,es-node-2,es-node-3
+      - xpack.security.enabled=false # linux'ta olan hata'nın sebebi
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
@@ -17,9 +18,10 @@ services:
     ports:
       - "9200:9200"
     volumes:
-      - ../elastic.datas/esdata1:/usr/share/elasticsearch/data:rw
+      # - ../elastic.datas/esdata1:/usr/share/elasticsearch/data:rw
+      - esdata1:/usr/share/elasticsearch/data:rw
   elasticsearch2:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.0
     container_name: elasticsearch2
     environment:
       - node.name=es-node-2
@@ -27,15 +29,17 @@ services:
       - discovery.seed_hosts=elasticsearch1,elasticsearch3
       - cluster.initial_master_nodes=es-node-1,es-node-2,es-node-3
       - bootstrap.memory_lock=true
+      - xpack.security.enabled=false    # linux'ta olan hata'nın sebebi
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
-      - ../elastic.datas/esdata2:/usr/share/elasticsearch/data:rw
+      # - ../elastic.datas/esdata2:/usr/share/elasticsearch/data:rw
+      - esdata2:/usr/share/elasticsearch/data:rw
   elasticsearch3:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.0
     container_name: elasticsearch3
     environment:
       - node.name=es-node-3
@@ -43,11 +47,13 @@ services:
       - discovery.seed_hosts=elasticsearch1,elasticsearch2
       - cluster.initial_master_nodes=es-node-1,es-node-2,es-node-3
       - bootstrap.memory_lock=true
+      - xpack.security.enabled=false # linux'ta olan hata'nın sebebi
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
-      - ../elastic.datas/esdata3:/usr/share/elasticsearch/data:rw
+      # - ../elastic.datas/esdata3:/usr/share/elasticsearch/data:rw
+      - esdata3:/usr/share/elasticsearch/data:rw
 
