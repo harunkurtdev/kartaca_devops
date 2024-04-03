@@ -13,6 +13,8 @@ Aşağıda ki video'da projeye ait, çalışmasını izleyebilirsiniz.
 
 [![Youtube Link](https://i9.ytimg.com/vi_webp/tNaWTzpV4yE/mqdefault.webp?v=660dcb7e&sqp=CNybt7AG&rs=AOn4CLDK9nJLdLfJiqnSjLw0kSd1WKyfHA)](https://www.youtube.com/watch?v=tNaWTzpV4yE)
 
+Master Branchında ubuntu22.04 üzerine göre geliştirilmiştir. 
+ - Son kararlı hali, ubuntu22.04'tür. 
 
 Burada yaptığım adımlar 2 farklı OS'ta denenmiştir.
     - MacOS Venture
