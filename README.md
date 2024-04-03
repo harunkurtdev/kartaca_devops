@@ -13,7 +13,7 @@ Aşağıda ki video'da projeye ait, çalışmasını izleyebilirsiniz.
 
 ![](https://www.youtube.com/watch?v=tNaWTzpV4yE)
 
-[![Youtube Link]
+![![Youtube Link]
 (https://www.google.com/imgres?q=youtube%20logo&imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F09%2FYouTube_full-color_icon_%25282017%2529.svg%2F1280px-YouTube_full-color_icon_%25282017%2529.svg.png&imgrefurl=https%3A%2F%2Ftr.m.wikipedia.org%2Fwiki%2FDosya%3AYouTube_full-color_icon_(2017).svg&docid=A1LXF8ZNsnCheM&tbnid=4SdipOmISh0hFM&vet=12ahUKEwiA_b-dgaeFAxUPYPEDHfpEAWUQM3oECBsQAA..i&w=1280&h=886&hcb=2&ved=2ahUKEwiA_b-dgaeFAxUPYPEDHfpEAWUQM3oECBsQAA)]
 (https://www.youtube.com/watch?v=tNaWTzpV4yE)  
 
