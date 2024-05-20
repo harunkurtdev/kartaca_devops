@@ -1,5 +1,7 @@
 # Kartaca DevOPS Internship Assignment
 
+2024 Kartaca DevOPS Stajyer Görevi
+
 Değerli Projeye bakan arkadaşım,
 A-Z proje çalışmaktadır. Seve Seve Kullan.
 
