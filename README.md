@@ -1,5 +1,11 @@
 # Kartaca DevOPS Internship Assignment
 
+Değerli Projeye bakan arkadaşım,
+A-Z proje çalışmaktadır. Seve Seve Kullan.
+
+Detaylı bilgi öğrenmek için,
+harunkurt.dev@gmail.com adresine mail atman yeterli.
+
 Merhaba Ben Harun KURT, Bölümüm mekatronik müh. fakat, burada öğreneceğim bilgilerle farklı branşlarda,
 
     - Cloud Robotics
